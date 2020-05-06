@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>spring-security-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>simple-spring-security</module>
+        <module>basic-auth</module>
+        <module>basic-auth-whitelist</module>
+        <module>basic-auth-with-user</module>
+        <module>basic-auth-with-users-and-roles</module>
+        <module>basic-auth-with-users-roles-authorities</module>
+        <module>basic-auth-with-users-roles-authority-annotation</module>
+        <module>form-based-authentication</module>
+        <module>form-based-authentication-with-dao</module>
+        <module>jwt-token-based-authentication</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <name>spring-security-examples</name>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-boot-dependencies.version>2.2.6.RELEASE</spring-boot-dependencies.version>
+        <lombok.version>1.16.20</lombok.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>29.0-jre</version>
+            </dependency>
+
+            <!--JWT libraries-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>0.11.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>0.11.1</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+                <version>0.11.1</version>
+                <scope>runtime</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-dependencies.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
